@@ -9,9 +9,9 @@ const Intern = require('./lib/Intern');
 
 const employees = [];
 
-function initApp() {
+function init() {
     startHtml();
-    addMember();
+    addEmployee();
 }
 
 function addEmployee() {
@@ -41,7 +41,7 @@ function addEmployee() {
         name: "email",
         message: "Enter employee's email:",
     }])  
-    .then(function({name, role, id, email})) {
+    .then(function({name, role, id, email}) {
         let extraInfo = "";
         if (role === "Manager") 
         {
@@ -71,20 +71,21 @@ function addEmployee() {
                 newEmployee = new Manager(name. id, email, extraInfo);
             } else if (role === "Engineer") {
                 newEmployee = new Engineer(name. id, email, extraInfo);
-            } else {role === "Intern") {
+            } else (role === "Intern"); {
                 newEmployee = new Intern(name. id, email, extraInfo);
             }
             employees.push(newEmployee);
             addHTML(newEmployee)
             .then (function() {
-                if (newEmployees === "yes") {
+                if (newEmployee === "yes") {
                     addEmployee();
                 } else {
                     finishHTML();
                 }
             });
-    };
-};    
+        });
+    });
+}    
 
 function startHtml() {
     const html = `<!DOCTYPE html>
@@ -102,15 +103,16 @@ function startHtml() {
         </nav>
         <div class="container">
             <div class="row">`;
-    fs.writeFile("./output/team.html", html, function(err) {
-        if (err) {
-            console.log(err);
-        }
+        fs.writeFile("./result/team.html", html, function(err) {
+            if (err) {
+                console.log(err);
+            }
     });
     console.log("start");
 }
 
-function addHtml(teammate) {
+
+function addHTML(teammate) {
     return new Promise(function(resolve, reject) {
         const name = teammate.getName();
         const role = teammate.getRole();
@@ -155,29 +157,23 @@ function addHtml(teammate) {
         </div>`;
         }
         console.log("adding employee");
-        fs.appendFile("./output/team.html", data, function (err) {
+        fs.appendFile("./result/team.html", data, function (err) {
             if (err) {
                 return reject(err);
             };
             return resolve();
         });
-    });
-    
-            
-    
-        
-    
-    
+    });   
 }
 
-function finishHtml() {
+function finishHTML() {
     const html = ` </div>
     </div>
     
 </body>
 </html>`;
 
-    fs.appendFile("./output/team.html", html, function (err) {
+    fs.appendFile("./result/team.html", html, function (err) {
         if (err) {
             console.log(err);
         };
@@ -186,6 +182,4 @@ function finishHtml() {
 }
 
 
-
-
-initApp();
+init(); 
