@@ -9,6 +9,7 @@
   - [Description](#description)
   - [Installation](#installation)
   - [Usage](#usage)
+  - [Demo](#demo)
   - [License](#lincense)
   - [Contributing](#credits)
   - [Tests](#tests)
@@ -19,6 +20,9 @@
 
   ## Usage
   You can use this to save information about employees
+
+  ## Demo
+  ![Alt Text](./src/HW10.gif)
 
   ## License
   ![badge](https://img.shields.io/badge/license-MIT-brightgreen)
